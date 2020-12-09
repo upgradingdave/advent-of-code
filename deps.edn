@@ -1,0 +1,7 @@
+{:paths ["src/clj" "resources"]
+ :deps {}
+ :aliases {:repl
+           {:extra-deps
+            {cider/cider-nrepl {:mvn/version "0.25.5"}}}}}
+
+
