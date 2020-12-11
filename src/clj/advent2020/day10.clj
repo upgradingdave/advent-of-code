@@ -76,19 +76,17 @@
 (defn find-possibles [j js]
   (take-while #(<= % (+ j 3)) js))
 
-(defn possibilities [i j js route]
-  ;;(println "i" i "j" j "js" js "route" route)
+(defn possibilities [j js]
   (cond
 
     ;; we've made it to the end of jolts, this is a possibility
     (empty? js)
-    [(conj route j)]
+    1
 
     ;; otherwise, let's see if we can find possible routes
     :else
     (let [possibles (find-possibles j js)]
 
-      ;;(println "possibles" possibles)
       ;; if no possible routes, then this isn't a possibility
       (cond
 
@@ -97,11 +95,11 @@
 
         ;; otherwise, try all possible routes
         :else
-        (mapcat
-         (fn [[i2 v]]
-           ;;(println "i" i "i2" i2 "total" (+ i i2))
-           (possibilities (inc i2) v (drop (inc i2) js) (conj route j)))
-         (map-indexed vector possibles))
+        (apply + 
+         (map
+          (fn [[i2 v]]
+            (possibilities v (drop (inc i2) js)))
+          (map-indexed vector possibles)))
         
         )
       )
@@ -109,15 +107,15 @@
   )
 
 (defn day10b [jolts]
-  (count
-   (let [highest (highest-joltage-rating jolts)]
-     (possibilities 1 0 (conj (into [] (sort jolts)) highest) []))))
+  (let [highest (highest-joltage-rating jolts)]
+    (possibilities 0 (sort (conj jolts highest)))))
 
 (comment
   (day10a sample1)
   (day10a (read-input input-file-path))
 
-  (day10a sample1)
+  (day10b sample1)p
+  (day10b sample2)
   (day10b (read-input input-file-path))
   
 
