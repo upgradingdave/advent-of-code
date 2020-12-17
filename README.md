@@ -1,4 +1,4 @@
-# My Advent of Code Solutions
+# My Advent of Code 2020 Solutions
 
 Open a clj file in emacs and use `cider-jack-in`.
 
