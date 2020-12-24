@@ -264,62 +264,16 @@
 ))
 
 (comment
-       f1    f2    f3
-  (n1(false true false)
-   n2(true true false)
-   n3(true true true))
-
-  n1 can't be f1
-  n1 can't be f3
-  n1 must be f2
-
-  n2 can't be f3
-  n2 must be f1
-
-  n3 must bee f2
-
-                  f1     f2   f3
-  [first ticket (n1(false true true)
-                 n2(true true true)
-                 n3(true true true))
-   second ticket ((true true false) (true true true) (true true true))
-   third ticket ((true true true) (true true false) (true true true))]
-
-  
-  [(
-    first n doesn't for first rule
-    ([false 3] [true 3] [true 3])
-    ([true 9] [true 9] [true 9])
-    ([true 18] [true 18] [true 18]))
-
-   first number cannot be first (class)
-   
-   (
-    first n doesn't work for third rule
-    ([true 15] [true 15] [false 15])
-    ([true 1] [true 1] [true 1])
-    ([true 5] [true 5] [true 5]))
-
-   first number can't be seat
-
-   first number is ROW
-   
-   second number (14) can't be third rule (seat)
-   so second number must be class
-   third number must be seat
-
-   (([true 5] [true 5] [true 5])
-    ([true 14] [true 14] [false 14])
-    ([true 9] [true 9] [true 9]))])
-
-(comment
   (day16a sample1)
   (day16a (read-input input-file-path))
 
   (day16b sample1)
+  (day16b (read-input input-file-path))
 
-  [11 "departure time"]
-  [15 "departure platform"])
+      f1    f2    f3
+  (n1(false true false)
+   n2(true true false)
+   n3(true true true)))
   
 
 
