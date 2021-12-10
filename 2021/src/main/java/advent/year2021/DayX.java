@@ -12,11 +12,11 @@ public class DayX {
     public static void main(String[] args) {
         final String DAY = "dayX";
 
-        DayX day4 = new DayX();
-        System.out.println("SAMPLE 1: " + day4.part1(DAY+"_sample.txt"));
-        //System.out.println("PART 1: " + day4.part1(DAY+"_input.txt"));
-        //System.out.println("SAMPLE 2: " + day4.part2(DAY+"_sample.txt"));
-        //System.out.println("PART 2: " + day4.part2(DAY+"_input.txt"));
+        DayX solution = new DayX();
+        System.out.println("SAMPLE 1: " + solution.part1(DAY+"_sample.txt"));
+        //System.out.println("PART 1: " + solution.part1(DAY+"_input.txt"));
+        //System.out.println("SAMPLE 2: " + solution.part2(DAY+"_sample.txt"));
+        //System.out.println("PART 2: " + solution.part2(DAY+"_input.txt"));
     }
 
     FileManager fileManager = new FileManager();
