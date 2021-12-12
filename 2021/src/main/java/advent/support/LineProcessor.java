@@ -1,5 +1,8 @@
 package advent.support;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class LineProcessor<T> {
 
     T context;
@@ -10,6 +13,15 @@ public abstract class LineProcessor<T> {
         this.context = context;
         this.state = -1;
         this.lineNumber = 0;
+    }
+
+    public Map<Integer, Integer> parseIntegerMap(String line) {
+        Map<Integer, Integer> row = new HashMap<>();
+        for(int i=0; i<line.length(); i++) {
+            Character c = line.charAt(i);
+            row.put(i, Integer.parseInt(""+c));
+        }
+        return row;
     }
 
     protected abstract void processLine(String line);

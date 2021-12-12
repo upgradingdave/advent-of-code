@@ -31,7 +31,7 @@ public class Day3 {
 
     FileManager fileManager = new FileManager();
 
-    private Command parseLine(String line) {
+    private Command parseCommand(String line) {
         Command command = new Command();
         command.setLine(line);
         return command;
@@ -44,7 +44,7 @@ public class Day3 {
             @Override
             public void processLine(String line) {
                 Context context = getContext();
-                Command command = parseLine(line);
+                Command command = parseCommand(line);
 
                 for(int i=0; i<length; i++) {
                     context.getGammaTally().inc(command.getChar(i), i);
@@ -119,7 +119,7 @@ public class Day3 {
             @Override
             public void processLine(String line) {
                 Context context = getContext();
-                Command command = parseLine(line);
+                Command command = parseCommand(line);
 
                 // everything is a candidate at first
                 context.getOxygenCandidates().add(command.getLine());

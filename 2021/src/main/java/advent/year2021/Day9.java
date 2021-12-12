@@ -2,6 +2,7 @@ package advent.year2021;
 
 import advent.support.FileManager;
 import advent.support.LineProcessor;
+import advent.support.Point;
 
 import java.util.*;
 
@@ -20,15 +21,6 @@ public class Day9 {
 
     FileManager fileManager = new FileManager();
 
-    private Map<Integer, Integer> parseLine(String line) {
-        Map<Integer, Integer> row = new HashMap<>();
-        for(int i=0; i<line.length(); i++) {
-            Character c = line.charAt(i);
-            row.put(i, Integer.parseInt(""+c));
-        }
-        return row;
-    }
-
     private Context parseContext(String fileName) {
 
         Context context = new Context();
@@ -38,7 +30,7 @@ public class Day9 {
             @Override
             public void processLine(String line) {
                 Context context = getContext();
-                Map<Integer, Integer> row = parseLine(line);
+                Map<Integer, Integer> row = parseIntegerMap(line);
                 context.heightMap.heightMap.put(getLineNumber(), row);
                 setContext(context);
                 setLineNumber(getLineNumber() + 1);
@@ -58,35 +50,6 @@ public class Day9 {
         Context context = parseContext(fileName);
         context.heightMap.buildBasins();
         return context.heightMap.basinsTotalSize();
-    }
-
-    private static class Point {
-        Integer row;
-        Integer col;
-
-        public Point(int row, int col) {
-            this.row = row;
-            this.col = col;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Point point = (Point) o;
-            return Objects.equals(row, point.row) &&
-                    Objects.equals(col, point.col);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(row, col);
-        }
-
-        @Override
-        public String toString() {
-            return "(" + row + "," + col +')';
-        }
     }
 
     public static class Basin {
