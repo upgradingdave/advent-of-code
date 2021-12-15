@@ -7,7 +7,7 @@ public class Point {
     public Integer row;
     public Integer col;
 
-    public Point(int row, int col) {
+    public Point(Integer row, Integer col) {
         this.row = row;
         this.col = col;
     }
